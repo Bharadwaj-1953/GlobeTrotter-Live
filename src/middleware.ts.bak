@@ -1,0 +1,3 @@
+// Deprecated: Next.js 16 uses proxy.ts instead of middleware.ts
+// Auth logic has been moved to src/proxy.ts
+export {}
