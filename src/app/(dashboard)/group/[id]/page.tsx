@@ -2,8 +2,8 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, use } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { DESTINATIONS } from '@/lib/data/destinations'
@@ -40,9 +40,9 @@ const FILTER_OPTIONS = [
   { label: 'Most Voted', value: 'most_voted' },
 ]
 
-export default function GroupDiscoveryPage({ params }: { params: Promise<{ id: string }> }) {
+export default function GroupDiscoveryPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
 
   const [loading, setLoading] = useState(true)
@@ -422,8 +422,4 @@ export default function GroupDiscoveryPage({ params }: { params: Promise<{ id: s
               </Link>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+     

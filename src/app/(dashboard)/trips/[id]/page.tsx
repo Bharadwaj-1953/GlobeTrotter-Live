@@ -2,8 +2,8 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, use } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { DESTINATIONS } from '@/lib/data/destinations'
@@ -192,9 +192,9 @@ function getLocalEvents(destName: string): LocalEvent[] {
   ]
 }
 
-export default function TripDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default function TripDetailPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
   const [trip, setTrip] = useState<Trip | null>(null)
   const [loading, setLoading] = useState(true)
@@ -788,8 +788,4 @@ export default function TripDetailPage({ params }: { params: Promise<{ id: strin
               </Link>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+     

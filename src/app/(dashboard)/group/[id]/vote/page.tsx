@@ -2,8 +2,8 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, use, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { DESTINATIONS } from '@/lib/data/destinations'
@@ -52,9 +52,9 @@ const AVATAR_COLORS = [
   'bg-indigo-500', 'bg-teal-500',
 ]
 
-export default function VotingPage({ params }: { params: Promise<{ id: string }> }) {
+export default function VotingPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
 
   const [loading, setLoading] = useState(true)
@@ -554,8 +554,4 @@ export default function VotingPage({ params }: { params: Promise<{ id: string }>
               View Itinerary
             </Link>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+     

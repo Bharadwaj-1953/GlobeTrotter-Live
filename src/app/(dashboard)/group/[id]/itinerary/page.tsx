@@ -2,8 +2,8 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, use } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { DESTINATIONS } from '@/lib/data/destinations'
@@ -180,9 +180,9 @@ const DAY_COLORS = [
 
 const HOTEL = { name: 'Boutique Hotel', location: '', rating: 4.8, nights: 4, pricePerNight: 150, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&w=800&q=80' }
 
-export default function GroupItineraryPage({ params }: { params: Promise<{ id: string }> }) {
+export default function GroupItineraryPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
   const [loading, setLoading] = useState(true)
   const [expandedDay, setExpandedDay] = useState<number | null>(1)

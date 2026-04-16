@@ -2,14 +2,14 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, use, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { AlertTriangle, ArrowLeft, LogOut, Users, MessageSquare, Map } from 'lucide-react'
 
-export default function LeaveGroupPage({ params }: { params: Promise<{ id: string }> }) {
+export default function LeaveGroupPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
   const [loading, setLoading] = useState(false)
   const [groupName, setGroupName] = useState('this group')
@@ -140,8 +140,4 @@ export default function LeaveGroupPage({ params }: { params: Promise<{ id: strin
             <ArrowLeft className="w-3.5 h-3.5" />
             Go back
           </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+     

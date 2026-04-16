@@ -2,8 +2,8 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState, useEffect, use } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { DESTINATIONS } from '@/lib/data/destinations'
@@ -19,9 +19,9 @@ import {
 import type { Trip, Destination, TransportOption, Hotel } from '@/types'
 
 
-export default function TripBreakdownPage({ params }: { params: Promise<{ id: string }> }) {
+export default function TripBreakdownPage() {
   const router = useRouter()
-  const { id } = use(params)
+  const { id } = useParams<{ id: string }>()
   const supabase = createClient()
   const [trip, setTrip] = useState<Trip | null>(null)
   const [loading, setLoading] = useState(true)
@@ -411,8 +411,4 @@ export default function TripBreakdownPage({ params }: { params: Promise<{ id: st
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+     
