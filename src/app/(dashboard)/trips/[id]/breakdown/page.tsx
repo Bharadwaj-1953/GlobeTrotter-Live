@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic'
 
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
-const TripBreakdownClient = dynamic(() => import('./TripBreakdownClient'), {
+const TripBreakdownClient = nextDynamic(() => import('./TripBreakdownClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">

@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic'
 
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
-const GroupItineraryClient = dynamic(() => import('./GroupItineraryClient'), {
+const GroupItineraryClient = nextDynamic(() => import('./GroupItineraryClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
@@ -11,6 +11,6 @@ const GroupItineraryClient = dynamic(() => import('./GroupItineraryClient'), {
   ),
 })
 
-export default function GroupItineraryPage() {
+export default function Page() {
   return <GroupItineraryClient />
 }

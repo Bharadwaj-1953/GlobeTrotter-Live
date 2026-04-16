@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic'
 
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
-const GroupDiscoveryClient = dynamic(() => import('./GroupDiscoveryClient'), {
+const GroupDiscoveryClient = nextDynamic(() => import('./GroupDiscoveryClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">

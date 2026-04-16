@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic'
 
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
-const GroupVoteClient = dynamic(() => import('./GroupVoteClient'), {
+const GroupVoteClient = nextDynamic(() => import('./GroupVoteClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">

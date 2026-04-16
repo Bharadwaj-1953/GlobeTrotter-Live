@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic'
 
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
-const LeaveGroupClient = dynamic(() => import('./LeaveGroupClient'), {
+const LeaveGroupClient = nextDynamic(() => import('./LeaveGroupClient'), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
